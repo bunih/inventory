@@ -1,0 +1,40 @@
+{% extends 'layouts/base.html' %} {% block content %} <br /><br /><br />
+
+<div class="container">
+
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Weapons</h4>
+            <a class="card-description btn btn-primary" style="color: white;"> Add Weapons</a>
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>name</th>
+                        <th>number</th>
+                        <th>image</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for weapon in weapons %}
+                    <tr>
+                        <td>{{ weapon.name }}</td>
+                        <td>{{ weapon.number }}</td>
+                        <td class="py-1">
+                            <img src="../../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                        </td>
+                        <td class="py-1">
+                           <a href="" class="btn btn-primary btn-sm">Edit</a>
+                           <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<br>
+
+{% endblock %}
