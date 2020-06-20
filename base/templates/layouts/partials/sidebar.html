@@ -23,7 +23,7 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Admin Dashboard</a>
+            <a class="nav-link" href="{% url 'home' %}">Admin Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="pages/ui-features/dropdowns.html">Normal Dashboard</a>
@@ -54,7 +54,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="{% url 'systemsite:site_index'%}">
         <i class="menu-icon typcn typcn-document-text"></i>
         <span class="menu-title">Sites</span>
       </a>

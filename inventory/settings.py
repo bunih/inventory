@@ -32,7 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # Custom App
-    'base','weapon',
+    'base','weapon','systemsite',
+    'accounts',
 
     # Built in Apps
     'django.contrib.admin',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
@@ -83,7 +85,7 @@ WSGI_APPLICATION = 'inventory.wsgi.application'
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 #     }
 # }
-
+LOGIN_URL='accounts/login'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
