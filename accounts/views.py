@@ -17,7 +17,7 @@ def login(request):
         if user is not None:       
             auth.login(request,user)
             messages.success(request,'Login successfully!')
-            return redirect('home')
+            return redirect('base:home')
         else:
             messages.error(request,'invalid credentials')
             return redirect('login')
@@ -54,7 +54,7 @@ def register(request):
                             elif gender=='2':
                                 my_status='Miss'
                                 Profile.objects.create(user_id=request.user.id, profile='images/users/default/she.png',status=my_status)
-                                return redirect('home')
+                                return redirect('base:home')
                             
                             
                      

@@ -23,10 +23,10 @@
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'home' %}">Admin Dashboard</a>
+            <a class="nav-link" href="{% url 'base:home' %}">Admin Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/dropdowns.html">Normal Dashboard</a>
+            <a class="nav-link" href="{% url 'base:user_dashboard' %}">Normal Dashboard</a>
           </li>
          
         </ul>
@@ -42,6 +42,12 @@
       </a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="index.html">
+        <i class="menu-icon typcn typcn-document-text"></i>
+        <span class="menu-title">Groups</span>
+      </a>
+    </li>
+    <li class="nav-item">
       <a class="nav-link" href="{% url 'weapons_index' %}">
         <i class="menu-icon typcn typcn-document-text"></i>
         <span class="menu-title">Weapons</span>
@@ -50,13 +56,19 @@
     <li class="nav-item">
       <a class="nav-link" href="index.html">
         <i class="menu-icon typcn typcn-document-text"></i>
-        <span class="menu-title">Locations</span>
+        <span class="menu-title">Tracking</span>
       </a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="{% url 'systemsite:site_index'%}">
         <i class="menu-icon typcn typcn-document-text"></i>
         <span class="menu-title">Sites</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'base:activity'%}">
+        <i class="menu-icon typcn typcn-document-text"></i>
+        <span class="menu-title">Activities</span>
       </a>
     </li>
 

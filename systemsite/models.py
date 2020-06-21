@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 
 class SiteSystem(models.Model):
     name=models.CharField(max_length=100)
-    guards=models.ManyToManyField(User,related_name='guards')
     place=models.ForeignKey('Place',on_delete=models.CASCADE)
     start_time=models.DateTimeField(auto_now=True)
     end_time=models.DateTimeField()
