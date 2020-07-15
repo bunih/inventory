@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import Activity
-from pprint import pprint
+from django.contrib import messages
+from .forms import ActivityForm
 
 class Index(LoginRequiredMixin,View):
     def get(self,request):
@@ -13,8 +14,10 @@ class ActivityView(LoginRequiredMixin,View):
     def get(self,request):
         template_name='activity/activity.html'
         activities = Activity.objects.order_by('-start_time')
+        form=ActivityForm()
         context={
-            'activities':activities
+            'activities':activities,
+            'form':form,
         }
         return render(request,template_name,context)
     
@@ -26,6 +29,8 @@ class UserView(LoginRequiredMixin,View):
             'activities':activities
         }
         return render(request,template_name,context)
+
+        
     
 
 def userDashboard(request):
@@ -35,3 +40,10 @@ def userDashboard(request):
             'activities':user_activity
         }
     return render(request,template_name,context)
+
+
+def delete_activity(request,id):
+    activity=Activity.objects.filter(id=id)[0]
+    activity.delete()
+    messages.success(request,'activity deleted successfull!')
+    return redirect('base:activity')

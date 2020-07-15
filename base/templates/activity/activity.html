@@ -6,7 +6,8 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">activities</h4>
-            <a class="card-description btn btn-primary" style="color: white;"> Add activity</a>
+            <a class="card-description btn btn-primary" data-toggle="modal" data-target="#create"
+             style="color: white;"> Add activity</a>
             <table class="table ">
                 <thead>
                     <tr>
@@ -43,7 +44,7 @@
 
                         <td class="py-1">
                             <a href="" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="" class="btn btn-danger btn-sm">Delete</a>
+                            <a href="{{ activity.delete_activity }}" class="btn btn-danger btn-sm">Delete</a>
                             <a href="" class="btn btn-info btn-sm">Verify</a>
                         </td>
                     </tr>
@@ -55,5 +56,38 @@
 </div>
 
 <br>
+
+
+
+
+
+
+<!-- Create Model -->
+
+<div class="modal fade" id="create" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalScrollableTitle">Create Weapon</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{% url 'weapons_index' %}" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 
 {% endblock %}

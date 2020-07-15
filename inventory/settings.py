@@ -124,7 +124,17 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'inventory/static'),
 ]
 
+#Message
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
 
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+    messages.INFO: 'info',
+    messages.WARNING: 'warning',
+    messages.DEBUG: 'debug',
+
+}
 
 
 # Internationalization

@@ -1,4 +1,7 @@
 from django.db import models
+from django.urls import reverse
+from django.utils.text import slugify
+
 
 # Create your models here.
 
@@ -8,9 +11,15 @@ class Weapon(models.Model):
     number=models.CharField(max_length=100)
     image=models.ImageField()
 
+    
+    def  delete_weapon(self):
+        return reverse('delete_weapon',kwargs={'id':self.id})
+
+    def update_weapon(self):
+        return reverse('update_weapon',kwargs={'id':self.id})
+
     class Meta:
         db_table='weapons'
-        pass
 
 
     def __str__(self):

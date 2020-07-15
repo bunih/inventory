@@ -35,6 +35,10 @@
 
             <!-- ====================================main=============================================== -->
             <div class="main-panel">
+                {% if messages %}
+                <br><br>
+                {% include 'layouts/partials/inc/msg.html' %}
+                {% endif %}
                 {% block content %}
 <!-- --------------data injection automatic here--------------- -->
                 {% endblock %}
