@@ -6,11 +6,11 @@ class WeaponForm(forms.ModelForm):
     class Meta:
         model = Weapon
         fields = '__all__'
-        labels={
-            'name':'',
-            'number':'',
-            'image':'',
-        }
+        # labels={
+        #     'name':'',
+        #     'number':'',
+        #     'image':'',
+        # }
         widgets = {
             'name': forms.TextInput(
                 attrs={
@@ -26,4 +26,11 @@ class WeaponForm(forms.ModelForm):
                     "style": "border-radius:50px",
                 }
             ),
+            'image': forms.FileInput(
+                attrs={
+                    "class": "form-control",
+                    "style": "border-radius:50px",
+                }
+            ),
+           
         }

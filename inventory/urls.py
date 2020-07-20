@@ -12,6 +12,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('weapons/', include('weapon.urls')),
+    path('activity/', include('activity.urls')),
     path('system-site/', include('systemsite.urls')),
     
 

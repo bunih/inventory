@@ -15,7 +15,6 @@ class Index(View):
         return render(request,'weapons/weapon_index.html',context)
 
     def post(self,request):
-        print(request.POST)
         form=WeaponForm(request.POST or None,request.FILES or None)
         if form.is_valid():
             form.save()
