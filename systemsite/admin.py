@@ -1,5 +1,4 @@
 from django.contrib import admin
-from .models import SiteSystem,Place
+from .models import SiteSystem
 # Register your models here.
 admin.site.register(SiteSystem)
-admin.site.register(Place)

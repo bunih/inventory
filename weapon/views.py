@@ -32,7 +32,7 @@ class Update(View):
             form=WeaponForm(request.POST or None,request.FILES or None,instance=weapon)
             if form.is_valid():
                 form.save()
-            messages.success(request,'weapon updated successfull!')
+                messages.success(request,'weapon updated successfull!')
             return redirect('weapons_index')
 
 def delete_weapon(request,id):

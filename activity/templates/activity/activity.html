@@ -2,6 +2,8 @@
 {% load humanize %}
 
 <div class="container">
+
+    {% if activities %}
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">activities</h4>
@@ -71,9 +73,13 @@
                                             {% csrf_token %}
                                             <p>
                                                 <label for="id_user">User:</label>
-                                                <input type="text" name="user" class="form-control"
+                                                <select>
+
+                                             <option value="">{{ activity.user }}</option>
+                                                </select>
+                                                <!-- <input type="text" name="user" class="form-control"
                                                     placeholder="Enter  user..." style="border-radius: 50px;"
-                                                    required="" id="id_user" value="{{ activity.user }}" />
+                                                    required="" id="id_user" value="{{ activity.user }}" /> -->
                                             </p>
 
                                             <p>
@@ -148,6 +154,23 @@
             </table>
         </div>
     </div>
+
+    {% else %}
+
+    <div class="jumbotron text-center">
+   
+        <h4 class="text-danger">No Any Data Found</h4>
+        <div >
+        or 
+        
+            {% if request.user.is_authenticated %}
+        <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#createActivity"
+        style="color: white;"> Add Activity </a>
+        {% endif %}
+        </div>
+        </div>
+
+    {% endif %}
 </div>
 
 <br />

@@ -7,7 +7,8 @@ from .views import *
 
 app_name='systemsite'
 urlpatterns = [
-    path('',Index.as_view(),name='site_index' ),
-    path('<int:id>/',delete_systemsite,name='delete_systemsite')
+    path('',Index.as_view(),name='index' ),
+    path('<int:id>/',delete_systemsite,name='delete'),
+    path('update/<int:id>/',Update.as_view(),name='update')
 
 ]

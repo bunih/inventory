@@ -9,7 +9,10 @@ class Index(LoginRequiredMixin,View):
     def get(self,request):
         template_name='activity/activity.html'
         activities = Activity.objects.order_by('-start_time')
-        form=ActivityForm()
+        InitailData={
+            'end_time':'2020-07-09'
+        }
+        form=ActivityForm(initial=InitailData)
         context={
             'activities':activities,
             'form':form,
@@ -29,12 +32,15 @@ class Index(LoginRequiredMixin,View):
 class Update(View):
     def post(self,request,*args,**kwargs):
             id_activity=kwargs['id']
-            activity=activity.objects.filter(id=id_activity)[0]
-            form=activityForm(request.POST or None,request.FILES or None,instance=activity)
+            activity=Activity.objects.filter(id=id_activity)[0]
+            form=ActivityForm(request.POST or None,request.FILES or None,instance=activity)
             if form.is_valid():
                 form.save()
-            messages.success(request,'activity updated successfull!')
-            return redirect('activity:index')
+                messages.success(request,'activity updated successfull!')
+                return redirect('activity:index')
+            else:
+                print(form.errors)
+                return redirect('activity:index')
 
 def delete_activity(request,id):
     activity=Activity.objects.filter(id=id)[0]
@@ -43,12 +49,3 @@ def delete_activity(request,id):
     return redirect('activity:index')
 
 
-class Update(View):
-    def post(self,request,*args,**kwargs):
-            id_activity=kwargs['id']
-            activity=Activity.objects.filter(id=id_activity)[0]
-            form=ActivityForm(request.POST or None,request.FILES or None,instance=activity)
-            if form.is_valid():
-                form.save()
-            messages.success(request,'Activities updated successfull!')
-            return redirect('activity:index')
