@@ -61,52 +61,22 @@ def register(request):
             else:
                 messages.error(request,"Password doesn't match")
                 return redirect('register')
-
-                
     else:
         return render(request,'accounts/register.html')
 
 
-
-
-
-
 def logout(request):
         auth.logout(request)
-        messages.info(request,'Logout successfully!')
         return redirect('login')
 
 
 
-
-# def profile(request):
-#     if request.method=='POST':
-#         status=request.POST['status']    
-#         location=request.POST['location']    
-#         phone=request.POST['phone']    
-#         if 'upload' in request.FILES and request.user.is_authenticated:
-#                 upload=request.FILES['upload']    
-#                 Profile.objects.filter(user_id=request.user.id).delete()
-#                 Profile.objects.create(user_id=request.user.id, profile=upload,status=status,phone=phone,location=location)  
-#                 messages.success(request,'Profile Updated successfully!')
-#                 return redirect('profile')
-#         else:
-#              Profile.objects.filter(user_id=request.user.id).update(user_id=request.user.id,status=status,phone=phone,location=location)
-#              return redirect('profile')
-
-#     else:
-#         return render(request,'accounts/profile.html')
-
-
 class Profile(View):
-    
     template_name='accounts/profile.html'
     def get(self,*args,**kwargs):
         if not self.request.user.is_authenticated:
           messages.error(self.request,'Please Login first')
           return redirect(f'/{settings.LOGIN_URL}?next={self.request.path}')
-
-          
         form=ProfileForm(instance=self.request.user.profile)
         context={
             'form':form

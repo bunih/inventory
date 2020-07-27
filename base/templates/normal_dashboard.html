@@ -1,16 +1,16 @@
-{% extends 'layouts/base.html' %} {% block content %} <br /><br /><br />
+{% extends 'layouts/base.html' %}
 {% load humanize %}
+{% block  content %}
 
-<div class="container">
 
-    {% if activities %}
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">activities</h4>
-            <a class="card-description btn btn-primary" data-toggle="modal" data-target="#createActivity"
-                style="color: white;">
-                Add activity</a>
-            <table class="table">
+<div class="content-wrapper">
+
+<div class="jumbotron text-center">
+   <h3> Activity of the day</h3>
+   <hr>
+
+
+   <table class="table">
                 <thead>
                     <tr>
                         <th>guards</th>
@@ -19,7 +19,6 @@
                         <th>status</th>
                         <th>start_time</th>
                         <th>end_time</th>
-                        <th>actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,21 +45,6 @@
                         <td>{{ activity.start_time |naturaltime }}</td>
                         <td>{{ activity.end_time}}</td>
 
-                        <td class="py-1">
-                            <a style="color: white;" data-toggle="modal" data-target="#edit{{activity.id}}"
-                                class="btn btn-primary btn-sm">Edit</a>
-                            <a style="color: white;" data-toggle="modal" data-target="#delete{{activity.id}}"
-                                class="btn btn-danger btn-sm">Delete</a>
-                            {% if activity.status %}
-                            <a href="" class="btn btn-secondary btn-sm" data-toggle="modal"
-                                data-target="#verify{{activity.id}}">UNDO</a>
-
-                            {%else %}
-                            <a href="" class="btn btn-warning btn-sm" data-toggle="modal"
-                                data-target="#verify{{activity.id}}">Verify</a>
-
-                            {%endif %}
-                        </td>
 
                         <!-- edit -->
                         <div class="modal fade" id="edit{{activity.id}}" tabindex="-1" role="dialog"
@@ -199,56 +183,10 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
-    </div>
-
-    {% else %}
-
-    <div class="jumbotron text-center">
-
-        <h4 class="text-danger">No Any Data Found</h4>
-        <div>
-            or
-
-            {% if request.user.is_authenticated %}
-            <a type="button" class="btn btn-primary" data-toggle="modal" data-target="#createActivity"
-                style="color: white;"> Add Activity </a>
-            {% endif %}
-        </div>
-    </div>
-
-    {% endif %}
 </div>
 
-<br />
 
-<!-- Create Model -->
+   </div>
 
-<div class="modal fade" id="createActivity" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalScrollableTitle">
-                    Create Activity
-                </h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{% url 'activity:index' %}" method="POST" enctype="multipart/form-data">
-                <div class="modal-body">
-                    {% csrf_token %} {{ form.as_p }}
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                        Close
-                    </button>
-                    <button type="submit" class="btn btn-primary">Create</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 
 {% endblock %}

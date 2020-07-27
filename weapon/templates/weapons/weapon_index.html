@@ -22,7 +22,7 @@
                         <td>{{ weapon.name }}</td>
                         <td>{{ weapon.number }}</td>
                         <td class="py-1">
-                            <img src="../../../assets/images/faces-clipart/pic-1.png" alt="image" />
+                            <img src="{{ weapon.image.url }}" alt="." />
                         </td>
                         <td class="py-1">
                             <a href="" class="btn btn-primary btn-sm" data-toggle="modal"
@@ -31,8 +31,6 @@
                                 class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
-
-
 
                     <!-- edit -->
                     <div class="modal fade" id="edit{{weapon.id}}" tabindex="-1" role="dialog"

@@ -22,3 +22,7 @@ class Activity(models.Model):
 
     def update_activity(self):
         return reverse('activity:update',kwargs={'id':self.id})
+
+
+    def verify_activity(self):
+        return reverse('activity:verify',kwargs={'id':self.id})

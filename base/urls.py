@@ -4,6 +4,6 @@ from .views import *
 
 app_name='base'
 urlpatterns=[
-    path('',Index.as_view() ,name='home'),
-    path('norma-dashboard/',userDashboard ,name='user_dashboard'),
+    path('',NormalDashboard.as_view() ,name='home'),
+    path('',Index.as_view() ,name='normal_dashboard'),
 ]
