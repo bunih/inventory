@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     # Custom App
     'base','weapon','systemsite',
-    'accounts','activity',
+    'accounts','activity','tracking',
 
     # Built in Apps
     'django.contrib.admin',

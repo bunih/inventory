@@ -5,13 +5,13 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin,PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required,permission_required
 from .forms import ActivityForm
+from datetime import datetime,date
 
-class Index(LoginRequiredMixin,PermissionRequiredMixin,View):
-    
+class Index(LoginRequiredMixin,View):
     def get(self,request):
-        permission_required = 'activity.view_activity'
         template_name='activity/activity.html'
-        activities = Activity.objects.order_by('-start_time')
+        activities = Activity.objects.filter(end_time__time__gt=datetime.now().time() ).order_by('-start_time')
+        print(activities)
         InitialData={
             'end_time':'2020-07-09'
         }
